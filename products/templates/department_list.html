@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Criar novo departamento <a href="{% url 'department_create' %}"> Aqui</a></p>
+        <table>
+            <tr>
+                <th>Name</th>
+            </tr>
+            {% for department in departments %}
+            <tr>
+                <td>{{ department.name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
