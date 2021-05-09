@@ -1,0 +1,1 @@
+SECRET_KEY2 = 'django-insecure-m@8y#gpu$j&-qofxtfcu1-1+ejmaq0_l5hmub!6-)!hpgs)&p6'
