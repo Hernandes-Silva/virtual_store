@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Criar novo produto <a href="{% url 'product_create' %}"> Aqui</a></p>
+        <table>
+            <tr>
+                <th>Name</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

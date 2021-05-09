@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Criar uma nova category <a href="{% url 'category_create' %}"> Aqui</a></p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+            </tr>
+
+            {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>{{ category.department }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

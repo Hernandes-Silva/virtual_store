@@ -1,4 +1,4 @@
-from django.test import TestCase, Cliente
+from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
 from products.models import Department, Product, Category
@@ -42,7 +42,7 @@ class TestView(TestCase):
     def test_GET_create_department(self):
         print('# Testing -- GET create department -- view')
 
-        response = self.client.get('department_create')
+        response = self.client.get(reverse('department_create'))
 
         print("--- init Testing request")
         self.assertEquals(response.status_code, 200)
@@ -75,6 +75,8 @@ class TestView(TestCase):
     def test_GET_list_category(self):
         print('# Testing -- GET list category -- view')
 
+        department  = Department.objects.create(name= "Informática")
+        category = Category.objects.create(name='computadores', department= department)
         response = self.client.get(reverse('category_list'))
 
         print("--- init Testing request")
@@ -99,9 +101,8 @@ class TestView(TestCase):
 
     def test_GET_create_category(self):
         print('# Testing -- GET create category -- view')
-        department  = Department.objects.create(name= "Informática")
-        category = Category.objects.create(name='computadores', department= department)
-        response = self.client.get(reverse('category_list'))
+        
+        response = self.client.get(reverse('category_create'))
         
         print("--- init Testing request")
         self.assertEquals(response.status_code, 200)
@@ -116,9 +117,10 @@ class TestView(TestCase):
     def test_POST_create_category(self):
         print('# Testing -- POST list category -- view')
         department  = Department.objects.create(name= "Informática")
-        response = self.client.post(reverse('category_create'), {
-            'name' : "computadores",
-            'department': department
+        url = reverse('category_create')
+        response = self.client.post(url, {
+            'name' : 'computadores',
+            'department': department.pk
         })
         print("--- init Testing request")
         self.assertEquals(response.status_code, 302)
