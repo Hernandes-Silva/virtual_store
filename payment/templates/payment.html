@@ -1,0 +1,26 @@
+
+<html>
+    
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+    
+<button class="cho-container"></button>
+<script>
+    // Adicione as credenciais do SDK
+      const mp = new MercadoPago('TEST-56c45011-948f-481a-b92b-3fbafd2c1318', {
+            locale: 'pt-BR'
+      });
+    
+      // Inicialize o checkout
+      mp.checkout({
+          preference: {
+              id: "{{ preference.id }}"
+          },
+          render: {
+                container: '.cho-container', // Indica onde o botão de pagamento será exibido
+                label: 'Pagar', // Muda o texto do botão de pagamento (opcional)
+          }
+    });
+    </script>
+</html>
+
+

@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 ### KEY ###
 virtual_store/secret_key.py
+.env
 ### Django ###
 *.log
 *.pot
