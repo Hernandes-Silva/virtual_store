@@ -21,4 +21,8 @@ class Cart:
             "price" : str(product.price)
         }
         self.session.modified = True
+    def remove(self, product):
+        del self.cart[str(product.id)]
+        self.session.modified = True
+
 
