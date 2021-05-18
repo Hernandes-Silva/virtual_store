@@ -5,10 +5,12 @@
         <table>
             <tr>
                 <th>Name</th>
+                <th>opção</th>
             </tr>
             {% for product in products %}
             <tr>
                 <td>{{ product.name }}</td>
+                <td><a href="{% url 'cart_add' product.id %}"> adcionar ao carrinho</a></td>
             </tr>
             {% endfor %}
         </table>
