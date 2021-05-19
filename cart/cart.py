@@ -12,7 +12,7 @@ class Cart:
             self.cart[str(product.id)]['product'] = product
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])
-            item['totakl_price'] = item['price'] * item['quantity']
+            #item['total_price'] = item['price'] * item['quantity']
             yield item
     def add(self, product):
         self.cart[str(product.id)] = {
@@ -21,8 +21,17 @@ class Cart:
             "price" : str(product.price)
         }
         self.session.modified = True
-    def remove(self, product):
-        del self.cart[str(product.id)]
+    def update(self, product, quantity=1):
+        self.cart[str(product.id)] = {
+            "name": product.name,
+            "quantity" : quantity,
+            "price" : str(product.price)
+        }
         self.session.modified = True
+    def remove(self, product):
+        product_id = str(product.id)
+        if product_id in self.cart:
+            del self.cart[product_id]
+            self.session.modified = True
 
 

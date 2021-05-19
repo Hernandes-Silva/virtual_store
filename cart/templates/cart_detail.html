@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
     <body>
         <p>Criar novo produto <a href="{% url 'product_create' %}"> Aqui</a></p>
         <table>
             <tr>
+                <th>teste</th>
                 <th>nome</th>
                 <th>preço</th>
                 <th>quantidade</th>
@@ -11,10 +15,28 @@
             </tr>
             {% for item in cart %}
             {% with product=item.product %}
+            {% with ''|center:product.stock as range %}
             <tr>
+                <td>{{ item.quantity }}</td>
                 <td>{{  product.name }}</td>
                 <td>{{  product.price }}</td>
-                <td>{{  item.quantity }}</td>
+                <td>
+                    <form action="{% url 'cart_update' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden"  name="product_id" value='{{ product.pk }}'>
+                        <select id = "quantity" name="quantity" onchange="this.form.submit()">
+                            {% for _ in range %}
+                            {% if  forloop.counter == item.quantity %}
+                                <option value="{{ forloop.counter }}" selected="selected">
+                                    {{ forloop.counter }}
+                                </option>
+                            {% else %}
+                                <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </form>
+                </td>
                 <form action="{% url 'cart_remove' %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ product.pk }}">
@@ -22,6 +44,7 @@
                 </form>
                 
             </tr>
+            {% endwith %}
             {% endwith %}
             {% endfor %}
         </table>

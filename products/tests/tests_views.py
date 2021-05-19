@@ -76,7 +76,7 @@ class TestView(TestCase):
         print('# Testing -- GET list category -- view')
 
         department  = Department.objects.create(name= "Informática")
-        category = Category.objects.create(name='computadores', department= department)
+        category = Category.objects.create(name='computadores', department=department)
         response = self.client.get(reverse('category_list'))
 
         print("--- init Testing request")
