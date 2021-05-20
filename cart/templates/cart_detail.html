@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <p>Criar novo produto <a href="{% url 'product_create' %}"> Aqui</a></p>
-        <table>
+{% extends 'base.html' %}
+{% block content  %}
+<div class="col-lg-9">
+    <div class="row">
+
+        <table class ="table table-bordered">
             <tr>
                 <th>teste</th>
                 <th>nome</th>
@@ -19,7 +17,7 @@
             <tr>
                 <td>{{ item.quantity }}</td>
                 <td>{{  product.name }}</td>
-                <td>{{  product.price }}</td>
+                <td>{{  item.total_price }}</td>
                 <td>
                     <form action="{% url 'cart_update' %}" method="POST">
                         {% csrf_token %}
@@ -40,7 +38,7 @@
                 <form action="{% url 'cart_remove' %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ product.pk }}">
-                    <td><button type="submit">remover</button></td>
+                    <td><button type="submit" class="btn btn-danger">remover</button></td>
                 </form>
                 
             </tr>
@@ -48,5 +46,6 @@
             {% endwith %}
             {% endfor %}
         </table>
-    </body>
-</html>
+    </div>
+</div>
+{% endblock content  %}

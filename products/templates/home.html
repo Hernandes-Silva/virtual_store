@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <p>Criar novo produto <a href="{% url 'product_create' %}"> Aqui</a></p>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>opção</th>
-            </tr>
+{% extends 'base.html' %}
+{% block content  %}
+    <div class="col-lg-9 mt-2">
+        <div class="row">
             {% for product in products %}
-            <tr>
-                <td>{{ product.name }}</td>
-                <td><a href="{% url 'cart_add' product.id %}"> adcionar ao carrinho</a></td>
-            </tr>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="#!"><img class="card-img-top" src="https://via.placeholder.com/700x400" alt="..." /></a>
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="#!">{{ product.name }}</a></h4>
+                        <h5>${{ product.price }}</h5>
+                        <p class="card-text">{{ product.information }}</p>
+                    </div>
+                    <div class="card-footer"><a  class="btn btn-primary" href="{% url 'cart_add' product.id %}">
+                         adcionar ao carrinho
+                        </a>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-        </table>
-    </body>
-</html>
+        </div>
+    </div>
+{% endblock content  %}
