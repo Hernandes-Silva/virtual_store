@@ -23,8 +23,8 @@ class TestCart(TestCase):
         self.assertEquals(cart['name'], "Pc gamer")
         print('# -- end Testing add product in cart -- view \n')
 
-    def test_GET_detail_cart(self):
-        print('# -- Testing Get cart deatil -- view ')
+    def test_GET_cart_detail(self):
+        print('# -- Testing Get cart detail -- view ')
         response = self.client.get(reverse('cart_detail'))
         print(" --- init testing request ---")
         self.assertEquals(response.status_code, 200)
@@ -33,8 +33,18 @@ class TestCart(TestCase):
         print(" --- init template used ---")
         self.assertTemplateUsed(response, 'cart_detail.html')
         print(" --- end template used ---\n")
-
-        print(" --- init testing session cart")
-
         print('# -- end Testing Get cart deatil -- view \n')
+    def test_POST_cart_remove(self):
+        print('# -- Testing POST cart remove -- view ')
+        self.client.get(reverse('cart_add', args=[self.product.pk]))
+        self.assertIn(str(self.product.pk), self.client.session['cart'])
+        response = self.client.post(reverse("cart_remove"), {"id":self.product.id})
+        print(" --- init testing request ---")
+        self.assertEquals(response.status_code, 302)
+        print(" --- end testing request ---\n")
+        print(" --- init testing success post ---") 
+        self.assertNotIn(str(self.product.pk), self.client.session['cart'])
+        print(" --- end init testing success post ---\n") 
+
+
 
