@@ -20,18 +20,73 @@ class OrderForm(forms.ModelForm):
         ]
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
-        self.fields['cpf'].widget.attrs = {'class': 'form-control'}
+        self.fields['cpf'].widget.attrs = {'class': 'form-control', 'placeholder': "000.000.000-00"}
+        self.fields['state'].widget.attrs = {'class': 'form-control' }
+        self.fields['postal_code'].widget.attrs = {'class': 'form-control', 'placeholder': "00000-000"}
     
-    field_classes = {
-        'phone': 'form-control'
-    }
+    input_class = "form-control mb-3"
     name = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Nome Completo",
-                "class": ""
+                "class": input_class
             }
         )
     )
-    
+    email = forms.EmailField(
+        widget=widgets.EmailInput(
+            attrs = {
+                "placeholder": "Email",
+                "class": input_class
+            }
+        )
+    )
+    phone = forms.CharField(
+        widget=forms.TimeInput(
+            attrs = {
+                "placeholder": "Telefone",
+                "class": input_class
+            }
+        )
+    )
+    city = forms.CharField(
+        widget=forms.TextInput(
+            attrs = {
+                "placeholder": "Cidade",
+                "class": input_class
+            }
+        )
+    )
+    district = forms.CharField(
+        widget=forms.TextInput(
+            attrs = {
+                "placeholder": "Bairro",
+                "class": input_class
+            }
+        )
+    )
+    street = forms.CharField(
+        widget=forms.TextInput(
+            attrs = {
+                "placeholder": "Rua",
+                "class": input_class
+            }
+        )
+    )
+    complement = forms.CharField(
+        widget=forms.TextInput(
+            attrs = {
+                "placeholder": "Complemento",
+                "class": input_class
+            }
+        )
+    )
+    number = forms.CharField(
+        widget=forms.TextInput(
+            attrs = {
+                "placeholder": "Numero",
+                "class": input_class
+            }
+        )
+    )
     

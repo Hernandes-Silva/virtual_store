@@ -3,6 +3,7 @@ from products.models import Product
 from django.core.validators import MinValueValidator
 from localflavor.br.models import BRCPFField, BRPostalCodeField, BRStateField
 from model_utils.models import TimeStampedModel
+from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.

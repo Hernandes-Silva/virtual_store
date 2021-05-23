@@ -20,7 +20,7 @@ def cart_update(request):
     quantity = int(request.POST['quantity'])
     cart.update(product, quantity)
     return redirect(reverse('cart_detail'))
-
+@require_POST
 def cart_remove(request):
     cart = Cart(request)
     product = get_object_or_404(Product, id = request.POST['id'])
