@@ -16,7 +16,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(verbose_name=_('Product name'), max_length = 100)
     price = models.FloatField(verbose_name=_('Product price'))
-    stock = models.PositiveIntegerField(verbose_name=_('Product stock'))
+    quantity = models.PositiveIntegerField(verbose_name=_('Product stock'))
     information = models.TextField(verbose_name=_('Product information'))
     technical_information = models.TextField(verbose_name=_('technical Product information'))
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

@@ -13,7 +13,7 @@
             </tr>
             {% for item in cart %}
             {% with product=item.product %}
-            {% with ''|center:product.stock as range %}
+            {% with ''|center:product.quantity as range %}
             <tr>
                 <td>{{ item.quantity }}</td>
                 <td>{{  product.name }}</td>

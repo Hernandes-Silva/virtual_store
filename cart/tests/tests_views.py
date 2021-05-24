@@ -12,7 +12,7 @@ class TestCart(TestCase):
         self.client.login(username=user.username, password = password)
         department  = Department.objects.create(name= "Informática")
         category = Category.objects.create(name="computadores", department = department)
-        self.product = Product.objects.create(name="Pc gamer", price = 10, stock= 50, information = "I5 com 10gb de ram",
+        self.product = Product.objects.create(name="Pc gamer", price = 10, quantity= 50, information = "I5 com 10gb de ram",
         technical_information = "Super veloz", category = category, brand="Asus")
         print('# -- End Setup Function\n')
 

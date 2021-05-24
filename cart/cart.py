@@ -11,21 +11,21 @@ class Cart:
         for product in products:
             self.cart[str(product.id)]['product'] = product
         for item in self.cart.values():
-            item['price'] = Decimal(item['price'])
+            item['price'] = float(item['price'])
             item['total_price'] = item['price'] * item['quantity']
             yield item
     def add(self, product):
         self.cart[str(product.id)] = {
             "name": product.name,
             "quantity" : 1,
-            "price" : str(product.price)
+            "price" : product.price
         }
         self.session.modified = True
     def update(self, product, quantity=1):
         self.cart[str(product.id)] = {
             "name": product.name,
             "quantity" : quantity,
-            "price" : str(product.price)
+            "price" : product.price
         }
         self.session.modified = True
     def remove(self, product):
