@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mercadopago',
-    
+    'requests',
     'products',
     'payment',
     'cart',

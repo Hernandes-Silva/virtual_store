@@ -1,12 +1,14 @@
 from django.db import models
+from django.db.models.fields import CharField
 from products.models import Product
+from order.models import Order
 # Create your models here.
-""" class Item(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+
 class Payment(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     mercadopago_id = models.IntegerField()
-    status = models.CharField(max_length=15)
-    installments = models.IntegerField("Parcelas") """
+    status = models.CharField(max_length=150)
+    installments = models.IntegerField("Parcelas")
+    status_detail = CharField(max_length=250)
+    payment_method = CharField(max_length=250)
+    payment_type = CharField(max_length=250)
