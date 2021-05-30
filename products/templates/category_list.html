@@ -6,12 +6,16 @@
             <tr>
                 <th>Name</th>
                 <th>Department</th>
+                <th>slug</th>
             </tr>
 
             {% for category in categories %}
             <tr>
                 <td>{{ category.name }}</td>
-                <td>{{ category.department }}</td>
+                <td>{{ category.department.slug }}</td>
+                {% if category.slug %}
+                <td><a href="{% url 'ecommerc:category' category.department.slug category.slug %}">aqui</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>

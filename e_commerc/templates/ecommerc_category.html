@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load permission_tags %}
+<div class="col-lg-9 mt-2">
+    <div class="row">
+
+        {% for product in products %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <a href="#!"><img class="card-img-top" {% if product.image %} src="{{ product.image.url }}" {% else %}
+                        src="https://via.placeholder.com/700x400" {% endif %} alt="..." /></a>
+                <div class="card-body">
+                    {% if user|can:'edit_home_page' %}
+                    X
+                    {% endif %}
+                    <h4 class="card-title"><a href="#!">{{ product.name }}</a></h4>
+                    <h5>${{ product.price }}</h5>
+                    <p class="card-text">{{ product.information }}</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary" href="{% url 'cart_add' product.id %}">
+                        adcionar ao carrinho
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

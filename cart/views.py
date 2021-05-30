@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from rolepermissions.checkers import has_permission
 from django.urls.base import reverse
+from rolepermissions.roles import assign_role, get_user_roles
 from django.views.decorators.http import require_POST
 from cart.cart import Cart
 from products.models import Product

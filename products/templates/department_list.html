@@ -5,10 +5,14 @@
         <table>
             <tr>
                 <th>Name</th>
+                <th>Slug</th>
             </tr>
             {% for department in departments %}
             <tr>
                 <td>{{ department.name }}</td>
+                {% if department.slug %}
+                <td><a href="{% url 'ecommerc:department' department.slug %}">aqui</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>

@@ -25,10 +25,9 @@ class CreateCategoryView(LoginRequiredMixin, CreateView):
     fields = "__all__"
     template_name = "category_create.html"
     success_url = reverse_lazy('category_list')
-class ListProductView(LoginRequiredMixin, ListView):
+class ListProductView(ListView):
     model = Product
-    login_url = "/admin/"
-    template_name = "home.html"
+    template_name = "product_list.html"
     context_object_name = 'products'
 class CreateProductView(LoginRequiredMixin, CreateView):
     model = Product

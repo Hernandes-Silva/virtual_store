@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-{% block content  %}
-<div class="col-lg-9">
+{% block content %}
+<div class="col-lg-8">
     <div class="row">
-
-        <table class ="table table-bordered">
+        <table class="table table-bordered">
             <tr>
                 <th>teste</th>
                 <th>nome</th>
@@ -16,20 +15,20 @@
             {% with ''|center:product.quantity as range %}
             <tr>
                 <td>{{ item.quantity }}</td>
-                <td>{{  product.name }}</td>
-                <td>{{  item.total_price }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ item.total_price }}</td>
                 <td>
                     <form action="{% url 'cart_update' %}" method="POST">
                         {% csrf_token %}
-                        <input type="hidden"  name="product_id" value='{{ product.pk }}'>
-                        <select id = "quantity" name="quantity" onchange="this.form.submit()">
+                        <input type="hidden" name="product_id" value='{{ product.pk }}'>
+                        <select id="quantity" name="quantity" onchange="this.form.submit()">
                             {% for _ in range %}
-                            {% if  forloop.counter == item.quantity %}
-                                <option value="{{ forloop.counter }}" selected="selected">
-                                    {{ forloop.counter }}
-                                </option>
+                            {% if forloop.counter == item.quantity %}
+                            <option value="{{ forloop.counter }}" selected="selected">
+                                {{ forloop.counter }}
+                            </option>
                             {% else %}
-                                <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                            <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
                             {% endif %}
                             {% endfor %}
                         </select>
@@ -40,7 +39,7 @@
                     <input type="hidden" name="id" value="{{ product.pk }}">
                     <td><button type="submit" class="btn btn-danger">remover</button></td>
                 </form>
-                
+
             </tr>
             {% endwith %}
             {% endwith %}
@@ -48,4 +47,17 @@
         </table>
     </div>
 </div>
-{% endblock content  %}
+{% if cart.cart %}
+<div class="col-lg-3 ml-2">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Carrino</h5>
+                <h4 class="card-text">Subtotal (2 itens): R$ 362,89</h4>
+                <a href="{% url 'order:order_create' %}" class="btn btn-primary">Comprar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

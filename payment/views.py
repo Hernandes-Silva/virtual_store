@@ -1,4 +1,5 @@
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from order.models import Order
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
@@ -6,6 +7,7 @@ import mercadopago
 from payment.models import Payment
 from django.urls import reverse
 import requests
+from django.views.generic import ListView, CreateView
 # Create your views here.
 
 
@@ -36,7 +38,7 @@ def paymentView(request, order_id):
         print(preference_data['items'])
         preference_response = sdk.preference().create(preference_data)
         preference = preference_response["response"]
-        return render(request, 'payment.html', {"preference": preference})
+        return render(request, 'payment.html', {"preference": preference, "items":order.items.all()})
     return redirect(reverse('home'))
 
 
@@ -73,7 +75,7 @@ def create_payment(payment_id, request):
       payment = requests.get(url)
       payment = payment.json()
       order = Order.objects.get(id=int(payment['description']))
-      object_pay = Payment.objects.create(order = order,mercadopago_id = payment['id'],
+      object_pay = Payment.objects.create(user = request.user, order = order,mercadopago_id = payment['id'],
          status = payment['status'], status_detail = payment['status_detail'], installments = payment['installments'],
          payment_method= payment['payment_method_id'], payment_type = payment['payment_type_id'])
       if payment['status'] == "approved":
@@ -85,16 +87,15 @@ def create_payment(payment_id, request):
       else:
          return render(request, "failure.html", {"payment": object_pay})
    return False
+class ListUserPaymentsView(LoginRequiredMixin, ListView):
+   model = Payment
+   template_name = 'list_payments.html'
+   context_object_name = "payments"
+   def get_queryset(self):
+        payments = Payment.objects.filter(user = self.request.user)
+        print(payments)
+        return payments
+   
 
 
 
-""" 
-collection_id=1237083248&collection_status=approved&
-payment_id=1237083248
-&status=approved
-&external_reference=null
-&payment_type=credit_card&merchant_order_id=2719304120
-&preference_id=705075200-aed5c712-9828-42b8-90ad-5a3644f845b3
-&site_id=MLB
-&processing_mode=aggregator
-&merchant_account_id=null """

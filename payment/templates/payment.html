@@ -1,26 +1,34 @@
 
-<html>
+{% extends 'base.html' %}
+{% block scriptstop %}<script src="https://sdk.mercadopago.com/js/v2"></script>{% endblock scriptstop %}
+{% block title %}Pamnento{% endblock title %}
+{% block content %}
+<div class="col-lg-9 mt-2 bordered">
+    <div class="row">
+        <h1>lista de itens</h1>
+        <table class ="table table-bordered">
+            <tr>
+                <th>Nome</th>
+                <th>preço</th>
+                <th>quantidade</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ preference.sandbox_init_point }}" class="btn btn-primary">Pagar com Mercado Pago</a>
+    </div>
+</div>
+
     
-<script src="https://sdk.mercadopago.com/js/v2"></script>
-<button class="cho-container"></button>
-<a href="{{ preference.sandbox_init_point }}">Pagar com Mercado Pago</a>
-<script>
-    /* // Adicione as credenciais do SDK
-      const mp = new MercadoPago('TEST-56c45011-948f-481a-b92b-3fbafd2c1318', {
-            locale: 'pt-BR'
-      });
-    
-      // Inicialize o checkout
-      mp.checkout({
-          preference: {
-              id: "{{ preference.id }}"
-          },
-          render: {
-                container: '.cho-container', // Indica onde o botão de pagamento será exibido
-                label: 'Pagar', // Muda o texto do botão de pagamento (opcional)
-          }
-    }); */
-    </script>
-</html>
+{% endblock content %}
+
+
+
+
 
 

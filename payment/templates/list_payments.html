@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content  %}
+<div class="col-lg-9 mt-2">
+    <div class="row">
+        <table class ="table table-bordered">
+            <tr>
+                <th>parcelas</th>
+                <th>Pago</th>
+                <th>preço</th>
+            </tr>
+            {% for payment in payments %}
+            <tr>
+                <td>{{ payment.installments }}</td>
+                <td>{{ payment.order.paid}}</td>
+                <td>2</td>
+            </tr>
+            {% endfor %}
+    </div>
+</div>
+{% endblock content  %}

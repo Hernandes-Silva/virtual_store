@@ -7,6 +7,6 @@ urlpatterns = [
     path('department/create', views.CreateDepartmentView.as_view(), name="department_create"),
     path('category/', views.ListCategoryView.as_view(), name="category_list"),
     path('category/create', views.CreateCategoryView.as_view(), name = "category_create"),
-    path('home/', views.ListProductView.as_view(), name="home"),
+    path('procucts/', views.ListProductView.as_view(), name="products"),
     path('products/create', views.CreateProductView.as_view(), name = "product_create"),
 ]
