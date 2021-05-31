@@ -3,6 +3,10 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView
 from products.models import Department, Category
 # Create your views here.
+def template_base(request):
+    base_departments = Department.objects.all()
+    return {'base_departments': base_departments}
+
 def CategoryView(request, department_slug, slug):
     department = get_object_or_404(Department, slug = department_slug)
     category = get_object_or_404(Category, slug = slug)
