@@ -3,6 +3,7 @@ from django.urls import path
 from e_commerc import views
 app_name = 'ecommerc'
 urlpatterns = [
+    path('', views.ListCardView.as_view()),
     path('home/', views.ListCardView.as_view(), name="home"),
     path('card/<int:pk>/update/', views.UpdateCardView.as_view(), name="card_update"),
     path('departamentos/<slug:slug>/', views.DepartmentView.as_view(), name="department"),
