@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="offset-lg-3 offset-md-3 col-lg-6 col-md-6 mt-3">
+    <form class="row" action="." method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="card mb-3">
+            <img src="https://via.placeholder.com/700x400" class="card-img-top">
+            <div class="col-md-12">
+            <label for="id_image" class="form-label">Imagem:</label>
+            {{ form.image }}
+            </div>
+            <div class="col-md-12 ">
+                <label for="id_link" class="form-label">Link do produto:</label>
+                {{ form.link }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Descrição</h5>
+              <div class="col-md-12">
+                <label for="iid_price " class="form-label">preço do produto:</label>
+                {{ form.price }}
+                </div>
+                <div class="col-md-12">
+                    <label for="id_descricion " class="form-label">Descrição do produto:</label>
+                    {{ form.descricion }}
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Comfirmar alteração</button>
+                </div>
+            </div> 
+        </div>
+    </form>
+</div>
+{% endblock content %}

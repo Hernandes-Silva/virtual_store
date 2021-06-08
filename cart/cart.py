@@ -14,6 +14,7 @@ class Cart:
             item['price'] = float(item['price'])
             item['total_price'] = item['price'] * item['quantity']
             yield item
+        
     def add(self, product):
         self.cart[str(product.id)] = {
             "name": product.name,

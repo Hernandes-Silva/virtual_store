@@ -1,9 +1,30 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock title %}
 {% block content %}
-    <form action="" method="POST">
+{% load myfilters %}
+<div class="col-lg-6 offset-lg-3 mt-5 shadow">
+    <h4 class="text-center mt-2">Login</h4>
+    <form action="." method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
+        {{ form.non_field_errors }}
+        <div class="col-lg-12">
+            {{ form.username.errors }}
+            <label for="id_username" class="form-label">{{ form.username.label_tag }}</label>
+            {{ form.username|addclass:'form-control' }}
+            <span class="helptext">{{ form.username.help_text }}</span>
+        </div>
+        <div class="col-lg-12 mt-2">
+            {{ form.password.errors }}
+            <label for="id_password" class="form-label">{{ form.password.label_tag }}</label>
+            {{ form.password|addclass:'form-control' }}
+            <span class="helptext">{{ form.password.help_text }}</span>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mb-2 mt-2">
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 40%;">Login</button>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}" />
     </form>
+    <p class='text-center'>ou</p>
+    <p class="lead text-center"><a href="{% url 'user_create' %}">Ainda não tem um usuário ? Crie um agora.</a></p>
+</div>
 {% endblock content %}

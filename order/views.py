@@ -8,12 +8,13 @@ from django.views.generic import ListView, CreateView
 from order.models import Order, Item
 from cart.cart import Cart
 from order.forms import OrderForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
 
 
-class CreateOrderView(CreateView):
+class CreateOrderView(LoginRequiredMixin,CreateView):
     model = Order
     form_class = OrderForm
     def form_valid(self, form):
@@ -33,4 +34,4 @@ class CreateOrderView(CreateView):
             del self.request.session['cart']
             self.request.session.modified = True
             return HttpResponseRedirect(reverse_lazy('payment', args=[order.id]))
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('ecommerc:home'))

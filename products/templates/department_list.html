@@ -1,20 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <p>Criar novo departamento <a href="{% url 'department_create' %}"> Aqui</a></p>
-        <table>
+{% extends 'base.html' %}
+{% block content %}
+        <p class="mt-2"><a href="{% url 'department_create' %}" class="btn btn-success"> Criar um novo departamento</a></p>
+        <table class="table">
             <tr>
-                <th>Name</th>
+                <th>Nome</th>
                 <th>Slug</th>
             </tr>
             {% for department in departments %}
             <tr>
                 <td>{{ department.name }}</td>
                 {% if department.slug %}
-                <td><a href="{% url 'ecommerc:department' department.slug %}">aqui</a></td>
+                <td><a href="{% url 'ecommerc:department' department.slug %}">{{ department.slug}}</a></td>
                 {% endif %}
+                <td>
+                    <a href="{% url 'department_update' department.pk%}" class="btn btn-success">
+                        Atualizar
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </table>
-    </body>
-</html>
+{% endblock content %}

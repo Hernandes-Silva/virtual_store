@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Sucesso{% endblock title %}
 {% block content %}
-    <h1>Estamos processando o seu pagamento</h1>
-    <p>
-        Obrigado por comprar conosco. Em até dois dias chegará um e-mail informando sobre o pagamento
-    </p>
+    <div class="col-lg-8 offset-lg-2 mt-5 shadow ">
+        <h1 class="text-center">Estamos processando o seu pagamento</h1>
+            <p class="mt-3 text-center lead">
+                Obrigado por comprar conosco. Em até dois dias chegará um e-mail informando sobre o pagamento
+            </p>
+        <div class="col-12 d-flex justify-content-center mb-1">
+            <a href="{% url 'payment_user_list' %}" class="btn btn-success"> Ver minhas compras </a>
+        </div>
+    </div>
     
 {% endblock content %}

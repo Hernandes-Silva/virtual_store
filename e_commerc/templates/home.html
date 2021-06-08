@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content  %}
+{% load permission_tags %}
+    <div class="offset-lg-1 col-lg-10 mt-2">
+        <div id="carouselExampleIndicators" class="carousel slide shadow-lg" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://images-americanas.b2w.io/spacey/acom/2021/05/25/NAMORADOS_HOME_DESTAQUEDESK_v2.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://images-americanas.b2w.io/spacey/acom/2021/05/31/193306917_3969856253082899_7476172755223514595_n.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://images-americanas.b2w.io/spacey/acom/2021/05/28/2021.05.31-Samsung-SOT_americanas-home-destaque-desktop-1250x313.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+    <div class="offset-lg-1 col-lg-9 mt-4">
+        <div class="row">
+            <h4>veja as últimas novidades!</h4>
+            {% for card in cards %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="{{ card.link }}"><img class="card-img-top border" src="{{ card.image.url }}" height="250px"alt="..." /></a>
+                    <div class="card-body">
+                        {% if user|can:'edit_home_page' %}
+                        <div class="d-grid gap-2">
+                            <a  class="btn btn-primary" href="{% url 'ecommerc:card_update' card.pk %}">
+                                Editar Card
+                            </a>
+                        </div>
+                        {% endif %}
+                        <h4 class="card-title"><a href="#!">{{ card.name }}</a></h4>
+                        <h5>${{ card.price }}</h5>
+                        <p class="card-text">{{ card.descricion }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2">
+                            <a  class="btn btn-primary" href="{{ card.link }}">
+                                Ver detalhes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content  %}

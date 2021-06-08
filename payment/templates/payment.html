@@ -1,19 +1,22 @@
-
 {% extends 'base.html' %}
-{% block scriptstop %}<script src="https://sdk.mercadopago.com/js/v2"></script>{% endblock scriptstop %}
+{% block scriptstop %}
+<script src="https://sdk.mercadopago.com/js/v2"></script>{% endblock scriptstop %}
 {% block title %}Pamnento{% endblock title %}
 {% block content %}
-<div class="col-lg-9 mt-2 bordered">
+<div class="shadow ml-5 offset-lg-1 col-lg-10 mt-2 bordered">
     <div class="row">
-        <h1>lista de itens</h1>
-        <table class ="table table-bordered">
+        <h1 class='text-center'>lista de itens do pedido {{total_price}}</h1>
+        <table class="table table-striped table-hover table-responsive">
             <tr>
+                <th></th>
                 <th>Nome</th>
                 <th>preço</th>
                 <th>quantidade</th>
             </tr>
             {% for item in items %}
             <tr>
+                <td><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" height="76px" width="101px">
+                </td>
                 <td>{{ item.product.name }}</td>
                 <td>{{ item.price }}</td>
                 <td>{{ item.quantity }}</td>
@@ -23,12 +26,54 @@
         <a href="{{ preference.sandbox_init_point }}" class="btn btn-primary">Pagar com Mercado Pago</a>
     </div>
 </div>
+<div class="offset-lg-1 col-lg-10 mt-2" style="background-color: #f2f2f2;">
+    <p class="lead"><strong> O pagamento é usando a forma teste do mercado pago, para usar os cartões
+            teste na hora de pagar escolha a opção "novo cartão" e siga as informações a seguir
+        </strong></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="text-align: left;">Cartão</th>
+                <th style="text-align: center;">Número</th>
+                <th style="text-align: center;">Código de segurança</th>
+                <th style="text-align: center;">Data de vencimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left;">Mastercard</td>
+                <td style="text-align: center;">5031 4332 1540 6351</td>
+                <td style="text-align: center;">123</td>
+                <td style="text-align: center;">11/25</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Visa</td>
+                <td style="text-align: center;">4235 6477 2802 5682</td>
+                <td style="text-align: center;">123</td>
+                <td style="text-align: center;">11/25</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">American Express</td>
+                <td style="text-align: center;">3753 651535 56885</td>
+                <td style="text-align: center;">1234</td>
+                <td style="text-align: center;">11/25</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Para <strong>testar diferentes resultados de pagamento</strong>,
+        preencha o dado que quiser no nome do titular do cartão:</p>
 
-    
+    <ul>
+        <li>APRO: Pagamento aprovado.</li>
+        <li>CONT: Pagamento pendente.</li>
+        <li>OTHE: Recusado por erro geral.</li>
+        <li>CALL: Recusado com validação para autorizar.</li>
+        <li>FUND: Recusado por quantia insuficiente.</li>
+        <li>SECU: Recusado por código de segurança inválido.</li>
+        <li>EXPI: Recusado por problema com a data de vencimento.</li>
+        <li>FORM: Recusado por erro no formulário.</li>
+    </ul>
+</div>
+
+
 {% endblock content %}
-
-
-
-
-
-

@@ -16,7 +16,7 @@ class TestView(TestCase):
         #falta verificar se estar logado
         print('# Testing -- GET list department -- view')
         
-        department  = Department.objects.create(name= "Informática")
+        department  = Department.objects.create(name= "Informática", slug='informatica')
         response = self.client.get(reverse('department_list'))
 
         print("--- init Testing request")
@@ -58,7 +58,8 @@ class TestView(TestCase):
         print('# Testing -- POST create department -- view')
         url = reverse('department_create')
         response = self.client.post(url, { 
-            'name' : 'Informática'
+            'name' : 'Informática',
+            'slug':'informatica'
         })
 
         print("--- init Testing request")
@@ -75,8 +76,8 @@ class TestView(TestCase):
     def test_GET_list_category(self):
         print('# Testing -- GET list category -- view')
 
-        department  = Department.objects.create(name= "Informática")
-        category = Category.objects.create(name='computadores', department=department)
+        department  = Department.objects.create(name= "Informática", slug='informatica')
+        category = Category.objects.create(name='computadores', department=department, slug='computadores')
         response = self.client.get(reverse('category_list'))
 
         print("--- init Testing request")
@@ -116,10 +117,11 @@ class TestView(TestCase):
 
     def test_POST_create_category(self):
         print('# Testing -- POST list category -- view')
-        department  = Department.objects.create(name= "Informática")
+        department  = Department.objects.create(name= "Informática", slug='informatica')
         url = reverse('category_create')
         response = self.client.post(url, {
             'name' : 'computadores',
+            'slug' : 'computadores',
             'department': department.pk
         })
         print("--- init Testing request")

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+<script>
+    $(document).ready(function(){
+        $("#add-item").click(function(ev) {
+            ev.preventDefault();
+            var count = $('#order').children().length;
+            var tmplMarkup = $("#item-order").html();
+            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+            $("div#order").append(compiledTmpl);
+
+            // update form count
+            $('#id_product-TOTAL_FORMS').attr('value', count + 1);
+
+            // some animate to scroll to view our new form
+            $('html, body').animate({
+                scrollTop: $("#add-item").position().top-200
+            }, 800);
+        });
+        document.getElementById("id_image").removeAttribute("required");
+    });
+</script>
+<div class="col-lg-12 mt-3">
+    <h3 class="text-center">Criar novo produto</h3>
+    <form class="row g-3" action="." method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="col-md-6">
+            <label for="id_name" class="form-label">Nome do produto:</label>
+            {{ form.name }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_quantity" class="form-label">Quantidade de produtos:</label>
+            {{ form.quantity }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_image" class="form-label">Imagem do produto:</label>
+            {{ form.image }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_category" class="form-label">Categoria do produto:</label>
+            {{ form.category }}
+        </div>
+        <div class="col-12">
+            <label for="id_information" class="form-label">Resumo do produto:</label>
+            {{ form.information }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_price" class="form-label">preço do produto:</label>
+            {{ form.price }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_brand" class="form-label">Marca do produto</label>
+            {{ form.brand }}
+        </div>
+        <div class="col-md-12 mb-1">
+            {{ formset.management_form }}
+        </div>
+        <div id="order" class="form-inline form-group">
+            {% for techForm in formset %}
+                <div id="item-{{ forloop.counter0 }}" class="row">
+                    <div class="col-md-6" >
+                        <label for="id_information_tech" class="form-label">information:</label>
+                        {{ techForm.information_tech }}
+                    </div>
+                
+                    <div class="col-md-6">
+                        <label for="id_descricion" class="form-label">descricion:</label>
+                        {{ techForm.descricion }}
+                    </div>
+                    {% for hidden in techForm.hidden_fields %}
+                            {{ hidden }}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <a class="btn btn-info" id="add-item"><i class="fa fa-plus"></i> Add Mais informações técnicas</a>
+
+        <!-- <div class="form-inline buttons">
+            <a href="" class="btn btn-warning pull-right"><i class="fa fa-times"></i> Cancelar</a>
+            <button class="btn btn-primary pull-right" value="Save"><i class="fa fa-floppy-o"></i> Salvar</button>
+        </div> -->
+        <div class="col-md-12 mb-1">
+            <button type="submit" class= "form-control btn btn-primary ">Editar produto</button>
+        </div>
+   
+    </form>
+</div>
+<script type="text/html" id="item-order">
+    <div id="item-__prefix__" style="margin-top: 10px" class="row">
+            <div class="col-md-6">
+                <label for="id_information_tech" class="form-label">information:</label>
+                {{ formset.empty_form.information_tech }}
+            </div>
+           
+            <div class="col-md-6">
+                <label for="id_descricion" class="form-label">descricion:</label>
+                {{ formset.empty_form.descricion }}
+            </div>
+            {% for hidden in formset.empty_form.hidden_fields %}
+                    {{ hidden }}
+            {% endfor %}
+
+    </div>
+</script>
+{% endblock content %}

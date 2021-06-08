@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+
 urlpatterns = [
     path('', include("products.urls")),
     path('admin/', admin.site.urls),
     path('', include("payment.urls")),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('cart/', include("cart.urls")),
     path('accounts/', include("accounts.urls")),
     path('', include("order.urls")),
     path('', include('e_commerc.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

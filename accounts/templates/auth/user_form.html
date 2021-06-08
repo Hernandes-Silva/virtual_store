@@ -1,8 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load myfilters %}
+<div class="col-lg-6 offset-lg-3 mt-3 shadow">
+    <h4 class="text-center mt-2">Criar novo usuário</h4>
     <form action="." method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"> cadastrar</button>
+        {{ form.non_field_errors }}
+        <div class="col-lg-12">
+            {{ form.username.errors }}
+            <label for="id_username" class="form-label">{{ form.username.label_tag }}</label>
+            {{ form.username|addclass:'form-control' }}
+            <span class="helptext">{{ form.username.help_text }}</span>
+        </div>
+        <div class="col-lg-12 mt-2">
+            {{ form.password1.errors }}
+            <label for="id_password1" class="form-label">{{ form.password1.label_tag }}</label>
+            {{ form.password1|addclass:'form-control' }}
+            <span class="helptext">{{ form.password1.help_text }}</span>
+        </div>
+        <div class="col-lg-12 mt-2">
+            {{ form.password2.errors }}
+            <label for="id_password2" class="form-label">{{ form.password2.label_tag }}</label>
+            {{ form.password2|addclass:'form-control' }}
+            <span class="helptext">{{ form.password2.help_text }}</span>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary mb-2 mt-1 btn-lg">cadastrar</button>
+        </div>
     </form>  
+</div>
 {% endblock content %}

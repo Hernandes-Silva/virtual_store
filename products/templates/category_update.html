@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="shadow col-lg-10 offset-lg-1 mt-5">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="col-lg-12">
+            {{ form.name.errors }}
+            <label for="id_name" class="form-label">Nome:</label>
+            {{ form.name }}
+        </div>
+        <div class="col-lg-12">
+            {{ form.slug.errors }}
+            <label for="id_name" class="form-label">Slug:</label>
+            {{ form.slug }}
+        </div>
+        <div class="col-lg-12">
+            {{ form.department.errors }}
+            <label for="id_name" class="form-label">Departamento:</label>
+            {{ form.department }}
+        </div>
+        <div class=" offset-lg-2 col-lg-8 mb-2 mt-3">
+            <button type="submit" class= "form-control btn btn-primary btn-lg">Atualizar</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

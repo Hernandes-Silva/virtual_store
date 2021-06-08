@@ -14,10 +14,10 @@ class TestClassCart(TestCase):
         middleware.process_request(self.http_request)
         self.session = self.http_request.session
         self.session_name = "cart"
-        department  = Department.objects.create(name= "Informática")
-        category = Category.objects.create(name="computadores", department = department)
+        department  = Department.objects.create(name= "Informática", slug='informatica')
+        category = Category.objects.create(name="computadores", department = department, slug='computadores')
         self.product = Product.objects.create(name="Pc gamer", price = 10, quantity= 50, information = "I5 com 10gb de ram",
-        technical_information = "Super veloz", category = category, brand="Asus")
+        category = category, brand="Asus")
         print('# -- End Setup Function\n')
     def test_create_empty_cart(self):
         print('# --- Testing create empty cart -- class')

@@ -1,27 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="col-lg-8">
+{% if cart.cart %}
+<div class="col-lg-8 container mt-1">
     <div class="row">
-        <table class="table table-bordered">
+        <h4>Carrinho</h4>
+        <table class="table table-striped table-hover mt-3 table-responsive">
             <tr>
-                <th>teste</th>
-                <th>nome</th>
+                <th></th>
+                <th></th>
                 <th>preço</th>
                 <th>quantidade</th>
-                <th>opção</th>
+                <th></th>
             </tr>
             {% for item in cart %}
             {% with product=item.product %}
             {% with ''|center:product.quantity as range %}
             <tr>
-                <td>{{ item.quantity }}</td>
+                <td><img src="{{ product.image.url }}" alt="{{ product.name }}" height="76px" width="101px"></td>
                 <td>{{ product.name }}</td>
                 <td>{{ item.total_price }}</td>
                 <td>
                     <form action="{% url 'cart_update' %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="product_id" value='{{ product.pk }}'>
-                        <select id="quantity" name="quantity" onchange="this.form.submit()">
+                        <select id="quantity" name="quantity" class="form-select" onchange="this.form.submit()">
                             {% for _ in range %}
                             {% if forloop.counter == item.quantity %}
                             <option value="{{ forloop.counter }}" selected="selected">
@@ -47,17 +49,19 @@
         </table>
     </div>
 </div>
-{% if cart.cart %}
-<div class="col-lg-3 ml-2">
+<div class="col-lg-3 col-sm-12 mt-3">
     <div class="row">
-        <div class="card" style="width: 18rem;">
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Carrino</h5>
-                <h4 class="card-text">Subtotal (2 itens): R$ 362,89</h4>
+                <h5 class="card-title"> Itens carrino</h5>
+                <h4 class="card-text">Subtotal ({{ item_quantity }} itens): R${{ total_price }}</h4>
                 <a href="{% url 'order:order_create' %}" class="btn btn-primary">Comprar</a>
             </div>
         </div>
     </div>
 </div>
+{% else %}
+<h4 class="text-center mt-5">Carrinho vazio</h4>
+
 {% endif %}
 {% endblock content %}

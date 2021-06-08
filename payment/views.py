@@ -4,13 +4,15 @@ from order.models import Order
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 import mercadopago
+from django.contrib.auth.decorators import login_required
 from payment.models import Payment
 from django.urls import reverse
 import requests
+from rolepermissions.mixins import HasRoleMixin
 from django.views.generic import ListView, CreateView
 # Create your views here.
 
-
+@login_required
 def paymentView(request, order_id):
     sdk = mercadopago.SDK(
         "TEST-5053757710631102-051117-2db1eede8cb93c0dbe21eb7067c51059-705075200")
@@ -35,36 +37,37 @@ def paymentView(request, order_id):
                 "quantity": item.quantity,
                 "unit_price": float(item.price)
             })
-        print(preference_data['items'])
         preference_response = sdk.preference().create(preference_data)
         preference = preference_response["response"]
-        return render(request, 'payment.html', {"preference": preference, "items":order.items.all()})
+        return render(request, 'payment.html', {"preference": preference, "items":order.items.all(), 'total_price':order.get_total_price})
     return redirect(reverse('home'))
 
-
+@login_required
 def paymentApprovedView(request):
    if request.GET['payment_id']:
       payment_id = request.GET['payment_id']
       url = create_payment(payment_id,request)
-      return url
-   return redirect(reverse('home'))
+      if url:
+         return url
+   return redirect(reverse('ecommerc:home'))
 
-
+@login_required
 def paymentFailureView(request):
    if request.GET['payment_id']:
       payment_id = request.GET['payment_id']
       url = create_payment(payment_id,request)
-      return url
-   return redirect(reverse('home'))
+      if url:
+         return url
+   return redirect(reverse('ecommerc:home'))
 
-
+@login_required
 def paymentPendingView(request):
    if request.GET['payment_id']:
       payment_id = request.GET['payment_id']
       url = create_payment(payment_id,request)
       if url:
          return url
-   return redirect(reverse('home'))
+   return redirect(reverse('ecommerc:home'))
 
 
 def create_payment(payment_id, request):
@@ -89,12 +92,17 @@ def create_payment(payment_id, request):
    return False
 class ListUserPaymentsView(LoginRequiredMixin, ListView):
    model = Payment
-   template_name = 'list_payments.html'
+   template_name = 'payment_user_list.html'
    context_object_name = "payments"
    def get_queryset(self):
         payments = Payment.objects.filter(user = self.request.user)
-        print(payments)
         return payments
+class ListPaymentsView(HasRoleMixin, ListView):
+   allowed_roles = 'MasterMember'
+   model = Payment
+   template_name = 'list_payments.html'
+   context_object_name = "payments"
+   
    
 
 

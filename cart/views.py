@@ -10,11 +10,19 @@ from products.models import Product
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    cart.add(product)
+    if product.quantity > 0:
+        cart.add(product)
     return redirect(reverse('cart_detail'))
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, 'cart_detail.html', {'cart': cart})
+    total_price = 0
+    item_quantity = 0
+    if cart:
+        for item in cart:
+            item_quantity += 1
+            total_price += item['total_price']
+    context = {'cart': cart, 'total_price':total_price, 'item_quantity': item_quantity}
+    return render(request, 'cart_detail.html', context)
 @require_POST
 def cart_update(request):
     cart = Cart(request)

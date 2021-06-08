@@ -1,26 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load permission_tags %}
+<div class="col-lg-3 mt-2">
+    <h4 class="my-4">Categorias semelhantes</h4>
+    <div class="list-group">
+        {% for category in department.categories.all %}
+        <a class="list-group-item lead" style="border: 0;"
+            href="{% url 'ecommerc:category' department.slug category.slug %}">
+            {{ category.name }}
+        </a>
+        {%endfor%}
+    </div>
+</div>
 <div class="col-lg-9 mt-2">
     <div class="row">
-
         {% for product in products %}
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-4 mb-4">
             <div class="card h-100">
-                <a href="#!"><img class="card-img-top" {% if product.image %} src="{{ product.image.url }}" {% else %}
-                        src="https://via.placeholder.com/700x400" {% endif %} alt="..." /></a>
+                <a href="{% url 'product_detail' product.id %}"><img class="card-img-top" {% if product.image %}
+                        src="{{ product.image.url }}" {% else %} src="https://via.placeholder.com/700x400" {% endif %}
+                        alt="..." /></a>
                 <div class="card-body">
-                    {% if user|can:'edit_home_page' %}
-                    X
-                    {% endif %}
-                    <h4 class="card-title"><a href="#!">{{ product.name }}</a></h4>
+                    <h5 class="card-title" style='max-height: 6rem;text-overflow:ellipsis;-webkit-line-clamp: 4;
+                    overflow:hidden;-webkit-box-orient: vertical;display: -webkit-box;'>
+                        <a href="{% url 'product_detail' product.id %}" style='color:black;'>
+                            {{ product.name }}
+                        </a>
+                    </h5>
                     <h5>${{ product.price }}</h5>
-                    <p class="card-text">{{ product.information }}</p>
                 </div>
+                {% if product.quantity == 0 %}
+                <div class="card-footer">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-danger" href="." onclick="return false;">
+                            Esgotado
+                        </a>
+                    </div>
+                </div>
+                {% else %}
                 <div class="card-footer"><a class="btn btn-primary" href="{% url 'cart_add' product.id %}">
                         adcionar ao carrinho
                     </a>
                 </div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}

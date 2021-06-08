@@ -1,8 +1,21 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="shadow col-lg-10 offset-lg-1 mt-5">
     <form method="POST" action="">
         {% csrf_token %}
-        {{ form.as_p}}
-        <button type="submit">Criar</button>
+        <div class="col-lg-12">
+            <label for="id_name" class="form-label">Nome:</label>
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+        <div class="col-lg-12">
+            <label for="id_name" class="form-label">Slug:</label>
+            {{ form.slug }}
+            {{ form.slug.errors }}
+        </div>
+        <div class=" offset-lg-2 col-lg-8 mb-2 mt-3">
+            <button type="submit" class= "form-control btn btn-primary btn-lg">Criar</button>
+        </div>
     </form>
-</html>
+</div>
+{% endblock content %}
