@@ -9,6 +9,7 @@ django-heroku==0.3.1
 django-localflavor==3.0.1
 django-model-utils==4.1.1
 django-role-permissions==3.1.1
+django-cloudinary-storage==0.3.0
 environ==1.0
 idna==2.10
 mercadopago==2.0.6
@@ -21,3 +22,4 @@ six==1.16.0
 sqlparse==0.4.1
 urllib3==1.26.4
 whitenoise==5.2.0
+cloudinary==1.17.0
