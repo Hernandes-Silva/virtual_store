@@ -9,7 +9,7 @@ django-heroku==0.3.1
 django-localflavor==3.0.1
 django-model-utils==4.1.1
 django-role-permissions==3.1.1
-django-cloudinary-storage==0.3.0
+dj3-cloudinary-storage-0.0.5
 environ==1.0
 idna==2.10
 mercadopago==2.0.6

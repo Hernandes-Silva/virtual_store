@@ -36,16 +36,15 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'cloudinary_storage',
-    'cloudinary',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage', 
+    'cloudinary',
     'mercadopago',
     'requests',
     'rolepermissions',
-
     'e_commerc',
     'accounts',
     'products',
@@ -146,9 +145,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CLOUDINARY_STORAGE = {
+DJANGO_CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'virtual-store',
     'API_KEY': '672655461637579',
     'API_SECRET': 'PIphqISxwggpeKTsGPI6sd8nfc8'
