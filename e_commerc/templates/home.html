@@ -35,7 +35,9 @@
             {% for card in cards %}
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <a href="{{ card.link }}"><img class="card-img-top border" src="{{ card.image.url }}" height="250px"alt="..." /></a>
+                    <a href="{{ card.link }}"><img class="card-img-top border" src="{{ card.image.url }}" height="250px"
+                      style="object-fit: contain;" alt="..." />
+                      </a>
                     <div class="card-body">
                         {% if user|can:'edit_home_page' %}
                         <div class="d-grid gap-2">
