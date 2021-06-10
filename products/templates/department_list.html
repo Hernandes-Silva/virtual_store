@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
         <p class="mt-2"><a href="{% url 'department_create' %}" class="btn btn-success"> Criar um novo departamento</a></p>
-        <table class="table">
+        <div class="table-responsive">
+        <table class="table table-responsive">
             <tr>
                 <th>Nome</th>
                 <th>Slug</th>
+                <th></th>
             </tr>
             {% for department in departments %}
             <tr>
@@ -20,4 +22,5 @@
             </tr>
             {% endfor %}
         </table>
+    </div>
 {% endblock content %}

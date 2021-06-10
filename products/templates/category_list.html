@@ -1,27 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-        <p class="mt-2"><a href="{% url 'category_create' %}" class="btn btn-success"> Criar uma nova category</a></p>
-        <table class="table">
-            <tr>
-                <th>Nome</th>
-                <th>departamento</th>
-                <th>slug</th>
-                <th></th>
-            </tr>
+<p class="mt-2"><a href="{% url 'category_create' %}" class="btn btn-success"> Criar uma nova category</a></p>
+<div class="table-responsive">
+    <table class="table table-responsive">
+        <tr>
+            <th>Nome</th>
+            <th>departamento</th>
+            <th>slug</th>
+            <th></th>
+        </tr>
 
-            {% for category in categories %}
-            <tr>
-                <td>{{ category.name }}</td>
-                <td>{{ category.department.name}}</td>
-                {% if category.slug %}
-                <td><a href="{% url 'ecommerc:category' category.department.slug category.slug %}">{{ category.slug}}</a></td>
-                {% endif %}
-                <td>
-                    <a href="{% url 'category_update' category.pk%}" class="btn btn-success">
-                        Atualizar
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+        {% for category in categories %}
+        <tr>
+            <td>{{ category.name }}</td>
+            <td>{{ category.department.name}}</td>
+            {% if category.slug %}
+            <td><a href="{% url 'ecommerc:category' category.department.slug category.slug %}">{{ category.slug}}</a>
+            </td>
+            {% endif %}
+            <td>
+                <a href="{% url 'category_update' category.pk%}" class="btn btn-success">
+                    Atualizar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock content %}
