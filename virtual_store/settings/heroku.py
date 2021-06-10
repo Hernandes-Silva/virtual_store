@@ -3,7 +3,12 @@ import environ
 from virtual_store.settings.base import *
 
 env = environ.Env()
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'virtual-store',
+    'API_KEY': '672655461637579',
+    'API_SECRET': 'PIphqISxwggpeKTsGPI6sd8nfc8'
+}
+DEFAULT_FILE_STORAGE  =  'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEBUG = env.bool('DEBUG', False)
 SECRET_KEY = env('SECRET_KEY')
 

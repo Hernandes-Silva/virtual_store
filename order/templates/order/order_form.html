@@ -6,51 +6,63 @@
         <div class="col-md-6">
             <label for="id_name" class="form-label">Nome Completo:</label>
             {{ form.name }}
+            {{ form.name.errors }}
         </div>
         <div class="col-md-6">
             <label for="id_cpf" class="form-label">CPF:</label>
             {{ form.cpf }}
+            {{ form.cpf.errors }}
         </div>
         <div class="col-md-6">
             <label for="iid_email" class="form-label">Email:</label>
             {{ form.email }}
+            {{ form.email.errors }}
         </div>
         <div class="col-6">
             <label for="id_phone" class="form-label">Telefone:</label>
             {{ form.phone }}
+            {{ form.phone.errors }}
         </div>
         <div class="col-4">
             <label for="id_postal_code" class="form-label">CEP:</label>
             {{ form.postal_code }}
+            {{ form.postal_code.errors }}
         </div>
         <div class="col-md-4">
             <label for="id_state" class="form-label">Estado</label>
             {{ form.state }}
+            {{ form.state.errors }}
         </div>
         <div class="col-md-4">
             <label for="id_city" class="form-label">Cidade</label>
             {{ form.city }}
+            {{ form.city.errors }}
         </div>
         <div class="col-md-6">
             <label for="id_district" class="form-label">Bairro:</label>
             {{ form.district }}
+            {{ form.district.errors }}
         </div>
         <div class="col-6">
 
             <label for="id_street" class="form-label">Rua:</label>
             {{ form.street }}
+            {{ form.street.errors }}
+
 
         </div>
         <div class="col-8">
 
             <label for="id_complement" class="form-label">complemento:</label>
             {{ form.complement }}
+            {{ form.complement.errors }}
 
         </div>
         <div class="col-4">
 
-            <label for="id_number" class="form-label">Número::</label>
+            <label for="id_number" class="form-label">Número:</label>
             {{ form.number }}
+            {{ form.number.errors }}
 
         </div>
         <div class="col-12 mb-2">

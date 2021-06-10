@@ -26,30 +26,37 @@
         <div class="col-md-6">
             <label for="id_name" class="form-label">Nome do produto:</label>
             {{ form.name }}
+            {{ form.name.errors }}
         </div>
         <div class="col-md-6">
             <label for="id_quantity" class="form-label">Quantidade de produtos:</label>
             {{ form.quantity }}
+            {{ form.quantity.errors }}
         </div>
         <div class="col-md-6">
             <label for="id_image" class="form-label">Imagem do produto:</label>
             {{ form.image }}
+            {{ form.image.errors }}
         </div>
         <div class="col-md-6">
             <label for="id_category" class="form-label">Categoria do produto:</label>
             {{ form.category }}
+            {{ form.category.errors }}
         </div>
         <div class="col-12">
             <label for="id_information" class="form-label">Resumo do produto:</label>
             {{ form.information }}
+            {{ form.information.errors }}
         </div>
         <div class="col-md-6">
             <label for="id_price" class="form-label">preço do produto:</label>
             {{ form.price }}
+            {{ form.price.errors }}
         </div>
         <div class="col-md-6">
             <label for="id_brand" class="form-label">Marca do produto</label>
             {{ form.brand }}
+            {{ form.brand.errors }}
         </div>
         <div class="col-md-12 mb-1">
             {{ formset.management_form }}
@@ -58,12 +65,12 @@
             {% for techForm in formset %}
                 <div id="item-{{ forloop.counter0 }}" class="row">
                     <div class="col-md-6" >
-                        <label for="id_information_tech" class="form-label">information:</label>
+                        <label for="id_information_tech" class="form-label">informação:</label>
                         {{ techForm.information_tech }}
                     </div>
                 
                     <div class="col-md-6">
-                        <label for="id_descricion" class="form-label">descricion:</label>
+                        <label for="id_descricion" class="form-label">descrição:</label>
                         {{ techForm.descricion }}
                     </div>
                     {% for hidden in formset.empty_form.hidden_fields %}

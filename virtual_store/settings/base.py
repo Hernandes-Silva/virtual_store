@@ -148,12 +148,7 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'virtual-store',
-    'API_KEY': '672655461637579',
-    'API_SECRET': 'PIphqISxwggpeKTsGPI6sd8nfc8'
-}
-DEFAULT_FILE_STORAGE  =  'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

@@ -48,7 +48,10 @@
                         {% endif %}
                         <h4 class="card-title"><a href="#!">{{ card.name }}</a></h4>
                         <h5>${{ card.price }}</h5>
-                        <p class="card-text">{{ card.descricion }}</p>
+                        <p class="card-text "style='max-height: 8rem;text-overflow:ellipsis;-webkit-line-clamp: 5;
+                        overflow:hidden;-webkit-box-orient: vertical;display: -webkit-box;'>
+                          <strong>{{ card.descricion }}</strong>
+                        </p>
                     </div>
                     <div class="card-footer">
                         <div class="d-grid gap-2">

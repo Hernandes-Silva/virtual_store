@@ -12,7 +12,6 @@
                 <div class="card-body">
                     <h4 class="card-title"><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h4>
                     <h5>${{ product.price }}</h5>
-                    <p class="card-text">{{ product.information }}</p>
                 </div>
                 {% if product.quantity == 0 %}
                 <div class="card-footer">
