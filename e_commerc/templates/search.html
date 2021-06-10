@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load permission_tags %}
-<div class="col-lg-3 mt-2 border">
+<div class="col-lg-3 mt-2 border  order-2 order-sm-2 order-md-1 order-lg-1">
     <h4 class="my-4">Categorias</h4>
     <div class="list-group">
         {% for category in categories %}
@@ -12,7 +12,7 @@
         {%endfor%}
     </div>
 </div>
-<div class="col-lg-9 mt-2 ">
+<div class="col-lg-9 mt-2 order-sm-1 order-lg-2 order-1">
     <div class="row">
         {% if products %}
         {% for product in products %}

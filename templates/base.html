@@ -95,16 +95,7 @@
       </div>
 
       <div class="collapse navbar-collapse">
-        <form class="navbar-nav me-auto mb-2 mb-lg-0" method="GET" action="{% url 'ecommerc:search' %}">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item col-lg-12">
-              <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
-            </li>
-            <li class="nav-item">
-              <button class="btn btn-secondary" type="submit">Buscar</button>
-            </li>
-          </ul>
-        </form>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
         {% if user|can:'edit_all_page' %}
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -164,7 +155,7 @@
         </div>
         {% if user|can:'edit_all_page' %}
 
-          <a class="h5 list-group-item mt-2 border-top-0" href="{% url 'ecommerc:administrador' %}">
+          <a class="h5 list-group-item mt-2 " href="{% url 'ecommerc:administrador' %}">
             Administração
           
         <a class="h5 list-group-item mt-1" href="{% url 'payment_list' %}">Ultimos pedidos</a>
@@ -189,13 +180,13 @@
   <!-- Page Content-->
   <div class="container-fluid conteudo">
     <div class="row">
-      <div class="d-md-block d-lg-none col-12 col-sm-12 col-md-12 bg-dark">
+      <div class="col-12 col-sm-12 col-md-12 bg-dark">
         <form class="row g-3" method="GET" action="{% url 'ecommerc:search' %}">
           <div class="col-11 col-sm-11 col-md-11 px-0">
-            <input class="form-control mb-1" type="search" name="search" placeholder="Search" aria-label="Search">
+            <input class="form-control mb-2" type="search" name="search" placeholder="Search" aria-label="Search">
           </div>
           <div class="d-grid gap-2  col-1 col-sm-1 col-md-1 px-0 ">
-            <button class="btn btn-outline-light mb-1" type="submit"><i class="fa fa-search"></i></button>
+            <button class="btn btn-outline-light mb-2" type="submit"><i class="fa fa-search"></i></button>
           </div>
         </form>
       </div>
