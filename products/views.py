@@ -16,14 +16,18 @@ from rolepermissions.mixins import HasPermissionsMixin
 @has_permission_decorator('edit_all_page', redirect_to_login = reverse_lazy('login'))
 def CreateProduct(request):
     product_forms = Product()
+    
     technical_information_formset = inlineformset_factory(Product, TechnicalInformation, form=TechnicalInformationForm, extra=0, can_delete=False, min_num=1, validate_min=True)
     if request.method == 'POST':
+        
         forms = ProductForm(request.POST, request.FILES, prefix='main')
         if forms.is_valid():
+            
             product = forms.save()
             formset = technical_information_formset(request.POST, request.FILES, instance=product, prefix='product')
             
             if  formset.is_valid():
+                
                 formset.save()
                 return HttpResponseRedirect(reverse_lazy('product_detail', args=[product.pk]))
     else:

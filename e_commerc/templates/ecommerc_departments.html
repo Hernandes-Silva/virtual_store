@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load permission_tags %}
-<div class="col-lg-9 mt-2">
+<div class="col-lg-3 mt-2 order-2 order-sm-2 order-md-1 order-lg-1">
+    <h4 class="my-4">Categorias</h4>
+    <div class="list-group">
+        {% for category in department.categories.all %}
+        <a class="list-group-item lead" style="border: 0;"
+            href="{% url 'ecommerc:category' department.slug category.slug %}">
+            {{ category.name }}
+        </a>
+        {% endfor%}
+    </div>
+</div>
+<div class="col-lg-9 mt-2 order-sm-1 order-lg-2 order-1">
     <div class="row">
-
         {% for category in department.categories.all %}
         {% for product in category.products.all %}
         <div class="col-lg-4 col-md-6 mb-4">
@@ -12,9 +22,11 @@
                         src="{{ product.image.url }}" {% else %} src="https://via.placeholder.com/700x400" {% endif %}
                         alt="..." /></a>
                 <div class="card-body">
-                    <h4 class="card-title"><a href="#!">{{ product.name }}</a></h4>
+                    <h5 class="card-title" style='max-height: 6rem;text-overflow:ellipsis;-webkit-line-clamp: 4;
+                    overflow:hidden;-webkit-box-orient: vertical;display: -webkit-box;'>
+                    <a href="{% url 'product_detail' product.id %}" style="color: black;">{{ product.name }}</a>
+                    </h5>
                     <h5>${{ product.price }}</h5>
-                    <p class="card-text">{{ product.information }}</p>
                 </div>
                 {% if product.quantity == 0 %}
                 <div class="d-grid gap-2">

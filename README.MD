@@ -6,9 +6,9 @@
 
 
 # Layout
-   Login            |  Cadastra-se
+   Home           |  Cadastra-se
 :-------------------------:|:-------------------------:
-![login](https://github.com/Hernandes-Silva/Saod-1/blob/main/imgsGit/login.png)  |  ![register](https://github.com/Hernandes-Silva/Saod-1/blob/main/imgsGit/register.png)
+![Home](https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/gif-Virtual_S.gif)  |  ![register](https://github.com/Hernandes-Silva/Saod-1/blob/main/imgsGit/register.png)
 
 Horários disponiveis            |  Horarios do usuário
 :-------------------------:|:-------------------------:
@@ -24,8 +24,8 @@ Horários disponiveis            |  Horarios do usuário
 ```bash
 
 # clone o projeto
-git clone https://github.com/Hernandes-Silva/virtual_store
-cd virtual_store
+$ git clone https://github.com/Hernandes-Silva/virtual_store
+$ cd virtual_store
 
 #acesse a pasta do projeto com o terminal/cmd e dê o comando:
 $  pip install -r requirements.txt
@@ -33,7 +33,7 @@ $  pip install -r requirements.txt
 #agora você recisa gerar a secret key do seu projeto e a chaves do mercado pago,
 #para isso crie um arquivo .env na raiz do projeto, e coloque nele
 
-MERCADO_PAGO_PUBLIC_KEY=TEST-xxxxxxxxxxxxxxxxxxx
+MERCADO_PAGO_PUBLIC_KEY=
 MERCADO_PAGO_ACCESS_TOKEN=
 SECRET_KEY=
 # depois gere um secret key no terminal copie e cole no secret key do seu projeto
@@ -52,40 +52,34 @@ $ python manage.py runserver
 
 ---
 ## Features
-- Os admin podem:
-   - [x] Ver os horários
-   - [X] Ver informações sobre quem marcou determinado horários
-   - [x] Excluir um horário
-   - [x] Criar um procedimento
-   - [x] Excluir um procedimento
-   - [x] Editar um procedimento
-   - [x] Criar um novo administrador
-   - [x] Editar suas informações e senha
-- Os usuários podem:
-   - [x] Ver os horários
+- Os MasterMember:
+   - [x] Acessar a administração
+   - [X] Ver todas os ultimos pedidos de compra
+   - [x] Editar os card da pagina home
+- Os Members:
+   - [x] Editar os card da pagina home
    - [x] Agendar um horário
    - [x] Desmarca seu hórario agendado
    - [x] Editar suas informações e senha
-- os não usuários podem:
+- Os Usuarios comum podem:
    - [x] cadastra-se
-   
+   - [x] colocar itens no carrinho
+   - [x] Comprar produtos
 
 
 ## Construido com
-* [GitHub](https://github.com/) - O repositório usado pela equipe
-* [PHP](https://www.php.net/downloads) - Linguagem de programação utilizada
-* [Laravel](https://laravel.com/) - O framework web usado
-* [MySQL](https://www.mysql.com/) - O banco de dados usado
+* [GitHub](https://github.com/) - O repositório usado
+* [Python3](https://www.python.org/downloads/)
+* [Django](https://www.djangoproject.com/start/) - O framework web usado
 
 
-## Authors
 
-* [**Hernandes Matheus**](https://github.com/Hernandes-Silva) 
-* [**Anna Karoline**](https://github.com/Anna-Karoline) 
-* [**Mayara**](https://github.com/mayaramdrs) 
+## Author
+
+* [**Hernandes Matheus**](https://github.com/Hernandes-Silva)
 
 
 
 ## License
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](https://opensource.org/licenses/MIT) para detalhes.

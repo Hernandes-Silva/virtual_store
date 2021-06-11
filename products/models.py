@@ -16,7 +16,7 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
-    name = models.CharField(verbose_name=_('Product name'), max_length = 100)
+    name = models.CharField(verbose_name=_('Product name'), max_length = 250)
     price = models.FloatField(verbose_name=_('Product price'))
     quantity = models.PositiveIntegerField(verbose_name=_('Product quantity'))
     image = models.ImageField(null=True, blank=True, upload_to="images/products/")

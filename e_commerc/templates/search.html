@@ -18,9 +18,12 @@
         {% for product in products %}
         <div class="col-lg-3 col-md-4 mb-4">
             <div class="card h-100">
-                <a href="{% url 'product_detail' product.id %}"><img class="card-img-top" {% if product.image %}
+                <a href="{% url 'product_detail' product.id %}">
+                        <img   height="200px" 
+                        style="object-fit: contain;" class="card-img-top" {% if product.image %}
                         src="{{ product.image.url }}" {% else %} src="https://via.placeholder.com/700x400" {% endif %}
-                        alt="..." /></a>
+                        alt="..." />
+                    </a>
                 <div class="card-body">
                     <h5 class="card-title" style='max-height: 6rem;text-overflow:ellipsis;-webkit-line-clamp: 4;
                         overflow:hidden;-webkit-box-orient: vertical;display: -webkit-box;'>
