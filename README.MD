@@ -6,9 +6,8 @@
 
 
 # Layout
-   Home           |  Cadastra-se
-:-------------------------:|:-------------------------:
-![Home](https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/gif-Virtual_S.gif)  |  ![register](https://github.com/Hernandes-Silva/Saod-1/blob/main/imgsGit/register.png)
+   Home           |
+<img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/gif-votg.gif" width='80%'>
 
 Horários disponiveis            |  Horarios do usuário
 :-------------------------:|:-------------------------:
