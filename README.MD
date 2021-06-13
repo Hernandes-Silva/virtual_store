@@ -6,7 +6,7 @@
 
 
 # Layout
-   Home           |
+
 <img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/gif-Virtual_S.gif" width='80%'>
 
 Horários disponiveis            |  Horarios do usuário
