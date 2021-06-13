@@ -62,9 +62,6 @@ $ python manage.py runserver
    - [x] Editar os card da pagina home
 - Os Members:
    - [x] Editar os card da pagina home
-   - [x] Agendar um horário
-   - [x] Desmarca seu hórario agendado
-   - [x] Editar suas informações e senha
 - Os Usuarios comum podem:
    - [x] cadastra-se
    - [x] colocar itens no carrinho
@@ -73,9 +70,8 @@ $ python manage.py runserver
 
 ## Construido com
 * [GitHub](https://github.com/) - O repositório usado
-* [Python3](https://www.python.org/downloads/)
+* [Python3](https://www.python.org/downloads/) - A linguagem de programação
 * [Django](https://www.djangoproject.com/start/) - O framework web usado
-
 
 
 ## Author
