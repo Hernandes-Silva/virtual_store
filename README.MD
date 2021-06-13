@@ -6,11 +6,16 @@
 
 
 # Layout
+### Mobile
+<p align="center">
+ <img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/git-Virtual_M.gif" width='28%'>
+</p>
 
-<img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/gif-Virtual_S.gif" width='80%'>
-
-Horários disponiveis            |  Horarios do usuário
-:-------------------------:|:-------------------------:
+### Web
+<p align="center">
+ <img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/gif-Virtual_S.gif" height='80%' width='80%'>
+ <img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/img-virtual.png" width='80%'>
+</p>
 
 
 ## Pré-requisitos
