@@ -34,7 +34,7 @@ $ cd virtual_store
 #acesse a pasta do projeto com o terminal/cmd e dê o comando:
 $  pip install -r requirements.txt
 
-#agora você recisa gerar a secret key do seu projeto e a chaves do mercado pago,
+#agora você precisa gerar a secret key do seu projeto e a chaves do mercado pago,
 #para isso crie um arquivo .env na raiz do projeto, e coloque nele
 
 MERCADO_PAGO_PUBLIC_KEY=

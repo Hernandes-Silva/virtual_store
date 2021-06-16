@@ -24,9 +24,9 @@ def paymentView(request, order_id):
             ],
             "auto_return": "approved",
             "back_urls": {
-                "success":  "https://arcane-woodland-94411.herokuapp.com/payments/approved",
-                "failure": "https://arcane-woodland-94411.herokuapp.com/payments/failure",
-                "pending": "https://arcane-woodland-94411.herokuapp.com/payments/pending"
+                "success":  "http://127.0.0.1:8000/payments/approved",
+                "failure": "http://127.0.0.1:8000/payments/failure",
+                "pending": "http://127.0.0.1:8000/payments/pending"
             }
 
         }
