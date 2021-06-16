@@ -98,7 +98,7 @@ class ListUserPaymentsView(LoginRequiredMixin, ListView):
         payments = Payment.objects.filter(user = self.request.user)
         return payments
 class ListPaymentsView(HasRoleMixin, ListView):
-   allowed_roles = 'MasterMember'
+   allowed_roles = 'masterMember'
    model = Payment
    template_name = 'list_payments.html'
    context_object_name = "payments"
