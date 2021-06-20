@@ -17,6 +17,12 @@
  <img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/img-virtual.png" width='80%'>
 </p>
 
+#### pagamento
+<p align="center">
+ <img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/pagamento.png" height='80%' width='80%'>
+ <img src="https://github.com/Hernandes-Silva/VOTG/blob/main/imgsGit/pagamento2.png" width='80%'>
+</p>
+
 
 ## Pré-requisitos
 
