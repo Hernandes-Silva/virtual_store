@@ -1,7 +1,7 @@
 
 
 # Virtual Store
-
+### link do site:[site](https://arcane-woodland-94411.herokuapp.com/)
  Virtual store é um ecommerc feito em django e integrado com o mercado pago. As pessoas do mundo inteira cada vez mais vem usando a internet frequentemente, dessa forma as lojas também não podem ficar para trás,sendo assim resolvi criar uma loja virtual com uma administração simples e de rápido aprendizagem. O sistema atualmente é meramente ficticio, todos os produtos nele são fictícios, assim como o pagamento que é feito com a forma teste do mercado pago, porém não deixando de fugir da realidade e da forma de pagamento real. Este é o [link](https://arcane-woodland-94411.herokuapp.com/) é para ver o site, as informações abaixo tem algumas imagens sobre o site e também como roda-lo na sua propria maquina.
 
 
